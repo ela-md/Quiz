@@ -17,10 +17,21 @@ export const AppContext = React.createContext()
 
 export const AppProvider = ({ children }) => {
 
+    const [waiting, setWaiting] = useState(true);
+    const [loading, setLoading] = useState(false);
+    const [questions, setQuestions] = useState([]);
+    const [index, setIndex] =useState(0);
+    const[correct, setCorrect] = useState(0);
+    const[error, setError] = useState(false);
+    const[isModalOpen, setIsModalOpen] = useState(false);
+  
+    const contextValue = {waiting, setWaiting, loading,
+       setLoading, questions, setQuestions,index, setIndex,
+       correct, setCorrect, error, setError, isModalOpen,
+      setIsModalOpen};
 
 
-
-  return <AppContext.Provider value={hello}>{children}</AppContext.Provider>
+  return <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
 
 }
 
